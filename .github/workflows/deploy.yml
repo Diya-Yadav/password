@@ -17,7 +17,11 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+<<<<<<< HEAD
           aws-region: eu-north-1  # change region if needed
+=======
+          aws-region: eu-north-1   # change region if needed
+>>>>>>> b4507bdd2ff2154b76e85d8de24b42afb52c641a
 
       - name: Sync files to S3
         run: |
