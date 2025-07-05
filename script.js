@@ -1,79 +1,62 @@
-<<<<<<< HEAD
+const lengthSlider = document.getElementById("length");
+const lengthValue = document.getElementById("lengthValue");
+const uppercase = document.getElementById("uppercase");
+const numbers = document.getElementById("numbers");
+const symbols = document.getElementById("symbols");
+const passwordInput = document.getElementById("password");
+const copyBtn = document.getElementById("copy");
+const generateBtn = document.getElementById("generate");
+const copiedMsg = document.getElementById("copied");
+const strengthMeter = document.getElementById("strengthMeter");
+const showPassword = document.getElementById("showPassword");
+const toggleMode = document.getElementById("toggleMode");
+
+lengthSlider.addEventListener("input", () => {
+  lengthValue.textContent = lengthSlider.value;
+});
+
+generateBtn.addEventListener("click", generatePassword);
+
+copyBtn.addEventListener("click", () => {
+  navigator.clipboard.writeText(passwordInput.value).then(() => {
+    copiedMsg.classList.remove("hidden");
+    setTimeout(() => copiedMsg.classList.add("hidden"), 1500);
+  });
+});
+
+showPassword.addEventListener("change", () => {
+  passwordInput.type = showPassword.checked ? "text" : "password";
+});
+
+toggleMode.addEventListener("click", () => {
+  document.body.classList.toggle("dark-mode");
+});
+
 function generatePassword() {
-  const length = document.getElementById("length").value;
-  const hasUpper = document.getElementById("uppercase").checked;
-  const hasLower = document.getElementById("lowercase").checked;
-  const hasNumber = document.getElementById("numbers").checked;
-  const hasSymbol = document.getElementById("symbols").checked;
-
-  const upperSet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  const lowerSet = "abcdefghijklmnopqrstuvwxyz";
-  const numberSet = "0123456789";
-  const symbolSet = "!@#$%^&*()_+[]{}|;:,.<>?";
-
-  let allChars = "";
-  if (hasUpper) allChars += upperSet;
-  if (hasLower) allChars += lowerSet;
-  if (hasNumber) allChars += numberSet;
-  if (hasSymbol) allChars += symbolSet;
-
-  if (allChars.length === 0) {
-    alert("Please select at least one character type.");
-    return;
-  }
+  const length = +lengthSlider.value;
+  let charset = "abcdefghijklmnopqrstuvwxyz";
+  if (uppercase.checked) charset += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  if (numbers.checked) charset += "0123456789";
+  if (symbols.checked) charset += "!@#$%^&*()_+[]{}|;:,.<>?";
 
   let password = "";
   for (let i = 0; i < length; i++) {
-    const index = Math.floor(Math.random() * allChars.length);
-    password += allChars[index];
+    password += charset[Math.floor(Math.random() * charset.length)];
   }
 
-  document.getElementById("password").value = password;
+  passwordInput.value = password;
+  updateStrength(password);
 }
 
-function copyPassword() {
-  const password = document.getElementById("password");
-  password.select();
-  document.execCommand("copy");
-  alert("Password copied to clipboard!");
+function updateStrength(password) {
+  let strength = 0;
+  if (password.length >= 8) strength++;
+  if (/[A-Z]/.test(password)) strength++;
+  if (/\d/.test(password)) strength++;
+  if (/[!@#$%^&*]/.test(password)) strength++;
+
+  const width = strength * 25;
+  strengthMeter.style.width = width + "%";
+  strengthMeter.style.background =
+    strength <= 1 ? "red" : strength === 2 ? "orange" : "green";
 }
-=======
-function generatePassword() {
-  const length = document.getElementById("length").value;
-  const hasUpper = document.getElementById("uppercase").checked;
-  const hasLower = document.getElementById("lowercase").checked;
-  const hasNumber = document.getElementById("numbers").checked;
-  const hasSymbol = document.getElementById("symbols").checked;
-
-  const upperSet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  const lowerSet = "abcdefghijklmnopqrstuvwxyz";
-  const numberSet = "0123456789";
-  const symbolSet = "!@#$%^&*()_+[]{}|;:,.<>?";
-
-  let allChars = "";
-  if (hasUpper) allChars += upperSet;
-  if (hasLower) allChars += lowerSet;
-  if (hasNumber) allChars += numberSet;
-  if (hasSymbol) allChars += symbolSet;
-
-  if (allChars.length === 0) {
-    alert("Please select at least one character type.");
-    return;
-  }
-
-  let password = "";
-  for (let i = 0; i < length; i++) {
-    const index = Math.floor(Math.random() * allChars.length);
-    password += allChars[index];
-  }
-
-  document.getElementById("password").value = password;
-}
-
-function copyPassword() {
-  const password = document.getElementById("password");
-  password.select();
-  document.execCommand("copy");
-  alert("Password copied to clipboard!");
-}
->>>>>>> cc621d5b7b9a424b8e972240b1da1870fc3a0ed0

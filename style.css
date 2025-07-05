@@ -1,7 +1,9 @@
-<<<<<<< HEAD
 body {
   font-family: Arial, sans-serif;
-  background: #f0f4f8;
+  margin: 0;
+  padding: 0;
+  background: #f4f4f4;
+  color: #333;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10,126 +12,76 @@ body {
 
 .container {
   background: white;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
   width: 300px;
 }
 
 h1 {
   text-align: center;
-  margin-bottom: 20px;
-  color: #333;
 }
 
 .input-group {
-  margin-bottom: 15px;
+  margin: 1rem 0;
 }
 
-.input-group label {
-  display: block;
-  margin: 5px 0;
+.password-display {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 1rem;
 }
 
-input[type="number"] {
-  width: 100%;
-  padding: 6px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+.password-display input {
+  flex: 1;
+  padding: 0.5rem;
+}
+
+#copy {
+  padding: 0.5rem;
+  cursor: pointer;
 }
 
 button {
   width: 100%;
-  padding: 10px;
-  background: #007bff;
-  color: white;
+  padding: 0.7rem;
+  margin-top: 0.5rem;
   border: none;
-  border-radius: 5px;
+  background: #333;
+  color: white;
+  border-radius: 6px;
   cursor: pointer;
-  margin-top: 10px;
 }
 
-button:hover {
-  background: #0056b3;
-}
-
-.output {
-  display: flex;
-  margin-top: 10px;
-  gap: 10px;
-}
-
-.output input {
-  flex: 1;
-  padding: 6px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-=======
-body {
-  font-family: Arial, sans-serif;
-  background: #f0f4f8;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
-.container {
-  background: white;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-  width: 300px;
-}
-
-h1 {
+#copied {
+  color: green;
   text-align: center;
-  margin-bottom: 20px;
-  color: #333;
+  margin-top: 0.5rem;
 }
 
-.input-group {
-  margin-bottom: 15px;
+.hidden {
+  display: none;
 }
 
-.input-group label {
-  display: block;
-  margin: 5px 0;
+.strength {
+  height: 5px;
+  background: #ddd;
+  margin-bottom: 0.5rem;
 }
 
-input[type="number"] {
-  width: 100%;
-  padding: 6px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+#strengthMeter {
+  height: 100%;
+  width: 0%;
+  background: green;
+  transition: width 0.3s;
 }
 
-button {
-  width: 100%;
-  padding: 10px;
-  background: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-top: 10px;
+.dark-mode {
+  background: #222;
+  color: #f4f4f4;
 }
 
-button:hover {
-  background: #0056b3;
+.dark-mode .container {
+  background: #333;
+  color: #f4f4f4;
 }
-
-.output {
-  display: flex;
-  margin-top: 10px;
-  gap: 10px;
-}
-
-.output input {
-  flex: 1;
-  padding: 6px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
->>>>>>> cc621d5b7b9a424b8e972240b1da1870fc3a0ed0
